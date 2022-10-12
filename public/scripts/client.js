@@ -1,18 +1,24 @@
 $(() => {
-  const $login = $('#login')
+  const $logout = $('#logout');
+  const $login = $('#login');
+
+  $logout.on('click', () => {
+    $logout.addClass('hidden');
+    $login.removeClass('hidden');
+  })
+
   $login.on('submit', (event) => {
-    event.preventDefault()
-    const username = $login.find('input').val()
-    console.log(username)
+    event.preventDefault();
+
+    const $input = $login.find('input');
+    const username = $input.val();
+
     $.post('/login', {username})
     .then((response) => {
-      console.log(response)
-      const $usersList = $('#users');
-      $usersList.empty();
-
-      for(const user of response.users) {
-        $(`<li class="user">`).text(user.name).appendTo($usersList);
-      }
+      $login.addClass('hidden');
+      $logout.removeClass('hidden');
+      $input.val('');
+      });
     });
   });
-});
+
