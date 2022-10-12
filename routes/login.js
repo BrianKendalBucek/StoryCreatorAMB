@@ -3,8 +3,9 @@ const router  = express.Router();
 const userQueries = require('../db/queries/users');
 
 router.post('/', (req, res) => {
-  const user = req.body.user
-  if (!user) return
+  const username = req.body.username
+  console.log(req.body)
+  if (!username) return
   userQueries.getUsers()
     .then(users => {
       res.json({ users });
