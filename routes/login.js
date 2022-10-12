@@ -5,7 +5,7 @@ const userQueries = require('../db/queries/users');
 router.post('/', (req, res) => {
   const username = req.body.username
   console.log(req.body)
-  if (!username) return
+  if (!username) return res.sendStatus(404)
   userQueries.getUsers()
     .then(users => {
       res.json({ users });

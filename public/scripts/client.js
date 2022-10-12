@@ -15,10 +15,14 @@ $(() => {
 
     $.post('/login', {username})
     .then((response) => {
+      console.log("Success");
       $login.addClass('hidden');
       $logout.removeClass('hidden');
       $input.val('');
-      });
+      })
+    .fail((error) => {
+      console.log("Faliure");
+    })
     });
   });
 
