@@ -2,13 +2,12 @@ const express = require('express');
 const router  = express.Router();
 const userQueries = require('../queries');
 
-router.post('/', (req, res) => {
-  const username = req.body.username
-  console.log(req.body)
-  if (!username) return
-  userQueries.getUsers()
-    .then(users => {
-      res.json({ users });
+router.get('/', (req, res) => {
+
+
+  userQueries.getStories()
+    .then(stories => {
+      res.json({ stories });
     })
     .catch(err => {
       res
@@ -18,4 +17,3 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
-
