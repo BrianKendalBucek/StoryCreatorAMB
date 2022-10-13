@@ -59,7 +59,7 @@ const escapeText = function (str) {
 const createStoryElement = function ({ username, title, text }) {
   const timestamp = 'tuesday'
   const htmlElement = `
-    <article class="tweet">
+    <article class="story">
     <header>
     <span>
     <span>${title}</span>
