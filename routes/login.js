@@ -1,20 +1,19 @@
 const express = require('express');
 const router  = express.Router();
-const userQueries = require('../db/queries/users');
+const { getUser } = require('../queries')
+
 
 router.post('/', (req, res) => {
   const username = req.body.username
-  console.log(req.body)
   if (!username) return
-  userQueries.getUsers()
-    .then(users => {
-      res.json({ users });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+
+  getUser(username)
+  .then((response) => {
+    const id = response[0].id
+
+
+    res.json({ id })
+   })
 });
 
 module.exports = router;
