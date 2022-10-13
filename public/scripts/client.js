@@ -21,7 +21,7 @@ $(() => {
       $input.val('');
       })
     .fail((error) => {
-      console.log("Faliure");
+      console.log("FailSure");
     })
     });
   });
