@@ -33,6 +33,34 @@ h1 {
   height: 5px;
 }
 
+.hidden {
+  display: none;
+}
+
+.story-conteiner{
+  display: flex;
+  flex-direction: column;
+  border: 2px;
+  border-style: solid;
+  justify-content: start;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 100%;
+  gap: 75px
+}
+
+.story-box {
+
+  background-color: rgb(26, 121, 162);
+  width: 75%;
+  height: auto;
+  min-height: 150px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+
 .heads {
   background-color: lightgrey;
   border-bottom: 3px solid darkgrey;

@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/client.js"></script>
 </head>
 
 <body>
@@ -23,12 +23,20 @@
   <div class="intro">
     <h1>Welcome to Shorties</h1>
     <h2>Tell your story, or make one better</h2>
-    <!-- <div class="login"> -->
-      <input type="text" placeholder="username">
-      <input type="text" placeholder="password">
-      <button type="button">Submit</button>
-    <!-- </div> -->
+    <form id="login">
+    <input type="text" placeholder="username" name="username">
+    <!-- <input type="text" placeholder="password"> -->
+      <button type="submit">Login</button>
+    </form>
+      <button id="logout" class="hidden">logout</button>
   </div>
+    <div class="story-conteiner">
+      <div class="story-box" id="story">
+        <p class="story-content">
+      </p>
+      </div>
+</div>
+
 </body>
 
 </html>

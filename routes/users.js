@@ -6,10 +6,26 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
+const { getUserStories } = require('../queries');
 
-router.get('/', (req, res) => {
-  res.render('users');
-}); 
+
+router.get("/:id/stories", (req, res) => {
+  const id = req.params.id
+
+
+  getUserStories(id)
+    .then((stories) => {
+      console.log(stories)
+      res.json({stories});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
 
 module.exports = router;
