@@ -23,13 +23,19 @@ $(() => {
 
     $.post('/login', { username })
       .then((response) => {
-        console.log("Success");
+
+        const id = response.id
+
+
         $login.addClass('hidden');
         $logout.removeClass('hidden');
         $input.val('');
-        return $.get('/stories')
+        return $.get(`/users/${id}/stories`)
       })
       .then((response) => {
+        console.log(response)
+        renderStories(response)
+
       })
       .catch((error) => {
         console.log("Failure");

@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 
   userQueries.getStories()
     .then(stories => {
-      res.json({ stories });
+      res.json( stories );
     })
     .catch(err => {
       res
