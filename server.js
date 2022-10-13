@@ -50,6 +50,9 @@ app.use('/stories', storiesRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  // const templateVariables = {
+  //   user: null
+  // }
   res.render('index');
 });
 
