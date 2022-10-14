@@ -15,6 +15,11 @@ a:focus {
   color: green;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 .intro {
   height: 450px;
   color: white;
@@ -33,11 +38,8 @@ h1 {
   height: 5px;
 }
 
-.hidden {
-  display: none;
-}
 
-.story-conteiner{
+.story-container{
   display: flex;
   flex-direction: column;
   border: 2px;
@@ -65,6 +67,9 @@ h1 {
   background-color: lightgrey;
   border-bottom: 3px solid darkgrey;
   color: black;
+  span {
+    cursor: pointer;
+  }
 }
 
 .nav-bar {
