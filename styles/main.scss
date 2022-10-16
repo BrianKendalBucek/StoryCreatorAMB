@@ -91,3 +91,132 @@ h1 {
 .shorties-link {
   font-size: 1.5rem;
 }
+
+// *********************
+// CSS for Profile.ejs
+
+body {
+  font-family: fantasy;
+  background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
+  background-size: 1440px;
+}
+
+h1 {
+  margin: 5rem;
+  font-size: 3rem;
+}
+
+.multi-story-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 50rem;
+  margin: 3rem;
+}
+
+.single-story-container {
+  border: 1px solid black;
+  margin: 1rem;
+  border-radius: 25px;
+  background-color: white;
+}
+
+p {
+  padding: 1rem;
+}
+
+.in-progress {
+  display: flex;
+  justify-content: space-between;
+}
+
+.complete-button {
+  margin: 2rem;
+  height: 2rem;
+}
+
+// **********************
+
+// CSS for Contributions
+
+body {
+  font-family: fantasy;
+  background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
+  background-size: cover;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 4rem;
+}
+
+.profile-button {
+  margin-left: 80rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.author-name {
+  margin-top: 3rem;
+}
+
+.story-original {
+  background-color: white;
+  border-radius: 25px;
+  margin-top: 2rem;
+  width: 50rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.story-original-text {
+  padding: 1rem;
+}
+
+.button-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.story-status {
+  justify-content: flex-end;
+
+  margin: 1rem;
+}
+
+.story-status-div {
+  margin-top: 1rem;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.submit-button {
+  margin: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.story-addition {
+  margin-top: 3rem;
+  width: 60rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.story-addition-text {
+  padding: 1rem;
+}
+
+.acceptance-button {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 2rem;
+}
+
+.button-accept, .button-decline {
+  margin: 1rem;
+}
