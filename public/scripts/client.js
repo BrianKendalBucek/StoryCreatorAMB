@@ -86,7 +86,9 @@ $(() => {
 
   $.get('/stories')
     .then((response) => {
-      renderStories(mockStories)
+
+      const { stories } = response
+      renderStories(stories)
     })
 
 });
@@ -98,23 +100,23 @@ const escapeText = function (str) {
   return div.innerHTML;
 }
 
-const createStoryElement = function ({ username, title, text }) {
-  const timestamp = 'tuesday'
+
+const createStoryElement = function ({ username, title, content, completed, votes, created  }) {
   const htmlElement = `
     <article class="story">
     <header>
     <span>
-    <span>${title}</span>
+    <span>${escapeText(title)} by ${escapeText(username)}</span>
     </span>
-    <span>${username}</span>
     </header>
-    <p>${escapeText(text)}</p>
+    <p class="story-content">${escapeText(content)}</p>
     <footer>
-    <span>${timestamp}</span>
+    <span>${created}</span>
     <span>
-    <i class="fa-solid fa-flag"></i>
-    <i class="fa-solid fa-retweet"></i>
-    <i class="fa-solid fa-heart"></i>
+    Votes ${votes}
+    </span>
+    <span>
+    Completed ${completed}
     </span>
     </footer>
     </article>
@@ -124,7 +126,8 @@ const createStoryElement = function ({ username, title, text }) {
 
 
 const renderStories = function (stories) {
-  const $storiesContainer = $(`#stories-container`)
+  console.log(stories)
+  const $storiesContainer = $(`.stories-container`)
   $storiesContainer.html("")
   for (const story of stories) {
     const $story = createStoryElement(story);

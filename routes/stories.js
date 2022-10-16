@@ -1,18 +1,17 @@
 const express = require('express');
 const router  = express.Router();
-const userQueries = require('../queries');
+  const { getUser, getStories, getUserStories } = require('../queries');
 
 router.get('/', (req, res) => {
 
 
-  userQueries.getStories()
+  getStories()
     .then(stories => {
-      res.json( stories );
+      console.log(stories)
+      res.json( { stories } );
     })
     .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+     console.log(err)
     });
 });
 
