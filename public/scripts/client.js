@@ -13,7 +13,6 @@ $(() => {
   const $storyForm = $('main #story-form');
   const $cancelButton = $storyForm.find('.cancel');
   const $storyContainer = $('main .story-container');
-  const $submitButton = $storyForm.find('.submit');
   let userId = '';
 
   $logout.on('click', () => {
