@@ -9,10 +9,16 @@ const mockStories = [
 $(() => {
   const $logout = $('#logout');
   const $login = $('#login');
+  const $createButton = $('header .create');
+  const $storyForm = $('main #story-form');
+  const $cancelButton = $storyForm.find('.cancel');
+  const $storyContainer = $('main .story-container');
+  const $submitButton = $storyForm.find('.submit');
+  let userId = '';
 
   $logout.on('click', () => {
-    $logout.addClass('hidden');
-    $login.removeClass('hidden');
+    $logout.hide();
+    $login.show();
   })
 
   $login.on('submit', (event) => {
@@ -24,13 +30,13 @@ $(() => {
     $.post('/login', { username })
       .then((response) => {
 
-        const id = response.id
+         userId = response.id
 
 
-        $login.addClass('hidden');
-        $logout.removeClass('hidden');
+        $login.hide();
+        $logout.show();
         $input.val('');
-        return $.get(`/users/${id}/stories`)
+        return $.get(`/users/${userId}/stories`)
       })
       .then((response) => {
         console.log(response)
@@ -41,6 +47,43 @@ $(() => {
         console.log("Failure");
       })
   });
+
+  $createButton.on('click', () => {
+    $storyForm.show();
+    $storyContainer.hide();
+  })
+
+  $cancelButton.on('click', () => {
+    $storyForm.hide();
+    $storyContainer.show();
+  })
+
+  $storyForm.on('submit', (event) => {
+    event.preventDefault();
+    const $titleInput = $storyForm.find('input.title');
+    const $bodyInput = $storyForm.find('input.body');
+    const storyTitle = $titleInput.val();
+    const storyBody = $bodyInput.val();
+
+    console.log(userId)
+    $.post('/stories', { storyTitle, storyBody, userId })
+      .then((response) => {
+
+
+
+
+        $login.hide();
+        $logout.show();
+        $input.val('');
+        return $.get(`/users/${id}/stories`)
+      })
+
+      .catch((error) => {
+        console.log("Failure");
+      })
+  });
+
+
 
   $.get('/stories')
     .then((response) => {
