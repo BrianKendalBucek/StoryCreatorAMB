@@ -1,6 +1,9 @@
 body {
- height: 1000px;
- font-family: fantasy;
+  height: 1000px;
+  font-family: fantasy;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a {
@@ -27,6 +30,7 @@ a:focus {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 h1 {
@@ -37,34 +41,11 @@ h1 {
   display: none;
 }
 
-.story-conteiner{
-  display: flex;
-  flex-direction: column;
-  border: 2px;
-  border-style: solid;
-  justify-content: start;
-  align-items: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  height: 100%;
-  gap: 75px
-}
-
-.story-box {
-
-  background-color: rgb(26, 121, 162);
-  width: 75%;
-  height: auto;
-  min-height: 150px;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-
 .heads {
   background-color: lightgrey;
   border-bottom: 3px solid darkgrey;
   color: black;
+  width: 100%;
 }
 
 .nav-bar {
@@ -81,8 +62,57 @@ h1 {
 
 .create {
   padding-right: 2.5rem;
+  margin: 2rem;
+}
+.profile{
+  margin: 2rem;
 }
 
 .shorties-link {
   font-size: 1.5rem;
+  margin: 2rem;
 }
+.story-containerDiv{
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.story-form{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.story-form textarea {
+
+  border: none;
+  border-bottom: 3px solid black  ;
+  width: 600px;
+  height: 240px;
+
+
+}
+.text{
+  width: 100%
+}
+.thumbs-container{
+
+display: flex;
+justify-content: end;
+
+}
+
+
+
+
+// .story-form span {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   padding: 10px;
+//   margin-top: 5px;
+// }
+// margin: 1rem;   margin: 1rem 0 1rem;
