@@ -30,7 +30,12 @@ const getStories = () => {
 
 
 const getUserStories = (id) => {
-  return db.query('SELECT * FROM stories WHERE user_id = $1;', [id])
+  const query = `SELECT *  FROM stories
+   JOIN contributions ON stories.id = contributions.story_id
+   JOIN users ON contributions.user_id = users.id
+   WHERE users.id = $1
+   LIMIT 10;`
+  return db.query(query, [id])
     .then(data => {
       return data.rows;
     });

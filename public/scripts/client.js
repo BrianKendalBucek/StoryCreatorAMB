@@ -37,9 +37,8 @@ $(() => {
         $input.val('');
         return $.get(`/users/${userId}/stories`)
       })
-      .then((response) => {
-        console.log(response)
-        renderStories(response)
+      .then(({ stories }) => {
+        renderStories(stories)
 
       })
       .catch((error) => {
