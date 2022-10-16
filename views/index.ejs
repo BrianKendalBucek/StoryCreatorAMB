@@ -15,46 +15,38 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/client.js"></script>
+<!-- This link for font font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-  <main>
-    <%- include('partials/_header') %>
-      <div class="intro">
-        <h1>Welcome to Shorties</h1>
-        <h2>Tell your story, or make one better</h2>
-        <form id="login">
-          <input type="text" placeholder="username" name="username">
-          <!-- <input type="text" placeholder="password"> -->
-          <button type="submit">Login</button>
+
+<%- include('partials/_header') %>
+
+  <div class="intro">
+    <h1>Welcome to Shorties</h1>
+    <h2>Tell your story, or make one better</h2>
+    <form id="login">
+    <input type="text" placeholder="username" name="username">
+    <!-- <input type="text" placeholder="password"> -->
+      <button type="submit">Login</button>
+    </form>
+      <button id="logout" class="hidden">logout</button>
+  </div>
+  <div class="story-containerDiv">
+    <form class="story-form" >
+          <textarea name="text"></textarea>
         </form>
-        <button id="logout" hidden>logout</button>
-      </div>
-
-      <form id="story-form" hidden>
-        <header>
-          <label for="title">
-            Story Title
-          </label>
-          <input type='text' name="title" class='title'/>
-        </header>
-        <div>
-          <label for="body">
-            Story Body
-          </label>
-          <input type="text" name="body" class="body">
-        </div>
-        <button type='button' class="cancel">Cancel</button>
-        <button type="submit" class="submit">Submit</button>
-      </form>
-
-      <div class="story-container">
-        <div class="story-box" id="story">
-          <p class="story-content">
-          </p>
+        <div class="thumbs-container">
+          <span>
+            <i class="fa-regular fa-thumbs-up"></i>
+            <i class="fa-regular fa-thumbs-down"></i>
+          </span>
         </div>
       </div>
-  </main>
+  </div>
+</div>
+
 
 </body>
 
