@@ -15,12 +15,16 @@ $(() => {
   const $cancelButton = $storyForm.find('.cancel');
   const $storyContainer = $('main .story-container');
   let userId = '';
+  const $intro = $('header .intro');
+  const $slogan = $('header #slogan');
 
 
   $logout.on('click', () => {
     $logout.hide();
     $login.show();
     $myProfile.hide();
+    $intro.removeClass('hidden');
+    $slogan.addClass('hidden');
   })
 
   $login.on('submit', (event) => {
@@ -40,6 +44,8 @@ $(() => {
         $input.val('');
         $myProfile.show();
         $createStory.show();
+        $intro.addClass('hidden');
+        $slogan.removeClass('hidden');
         return $.get(`/users/${userId}/stories`)
       })
       .then(({ stories }) => {
