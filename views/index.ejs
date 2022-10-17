@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Home Page</title>
 
-<head>
-  <title>Home Page</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/client.js"></script>
+  </head>
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/client.js"></script>
-</head>
+  <body>
+    <%- include('partials/_header') %>
 
-<body>
-  <%- include('partials/_header') %>
-
-  <div class="intro">
-    <h1>Welcome to Shorties</h1>
-    <h2>Tell your story, or make one better</h2>
-    <form id="login">
-    <input type="text" placeholder="username" name="username">
-    <!-- <input type="text" placeholder="password"> -->
-      <button type="submit">Login</button>
-    </form>
+    <div class="intro">
+      <h1>Welcome to Shorties</h1>
+      <h2>Tell your story, or make one better</h2>
+      <form id="login">
+        <input type="text" placeholder="username" name="username" />
+        <!-- <input type="text" placeholder="password"> -->
+        <button type="submit">Login</button>
+      </form>
       <button id="logout" class="hidden">logout</button>
-  </div>
-    <div class="story-conteiner">
-      <div class="story-box" id="story">
-        <p class="story-content">
-      </p>
-      </div>
-</div>
-
-</body>
-
+      <!-- <div class="story-container"> -->
+        <div class="story-box" id="story">
+          <p class="story-content"></p>
+        </div>
+      <!-- </div> -->
+    </div>
+  </body>
 </html>
