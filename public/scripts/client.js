@@ -9,15 +9,18 @@ const mockStories = [
 $(() => {
   const $logout = $('#logout');
   const $login = $('#login');
-  const $createButton = $('header .create');
+  const $createStory = $('header .create');
+  const $myProfile = $('header .profile')
   const $storyForm = $('main #story-form');
   const $cancelButton = $storyForm.find('.cancel');
   const $storyContainer = $('main .story-container');
   let userId = '';
 
+
   $logout.on('click', () => {
     $logout.hide();
     $login.show();
+    $myProfile.hide();
   })
 
   $login.on('submit', (event) => {
@@ -35,6 +38,7 @@ $(() => {
         $login.hide();
         $logout.show();
         $input.val('');
+        $myProfile.show();
         return $.get(`/users/${userId}/stories`)
       })
       .then(({ stories }) => {
@@ -46,7 +50,7 @@ $(() => {
       })
   });
 
-  $createButton.on('click', () => {
+  $createStory.on('click', () => {
     $storyForm.show();
     $storyContainer.hide();
   })
