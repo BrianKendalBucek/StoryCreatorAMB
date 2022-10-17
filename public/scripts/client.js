@@ -17,12 +17,14 @@ $(() => {
   let userId = '';
   const $intro = $('header .intro');
   const $slogan = $('header #slogan');
+  const $logo = $('header .shorties-link');
 
 
   $logout.on('click', () => {
     $logout.hide();
     $login.show();
     $myProfile.hide();
+    $createStory.hide();
     $intro.removeClass('hidden');
     $slogan.addClass('hidden');
   })
@@ -36,7 +38,7 @@ $(() => {
     $.post('/login', { username })
       .then((response) => {
 
-         userId = response.id
+        userId = response.id
 
 
         $login.hide();
@@ -46,16 +48,23 @@ $(() => {
         $createStory.show();
         $intro.addClass('hidden');
         $slogan.removeClass('hidden');
-        return $.get(`/users/${userId}/stories`)
-      })
-      .then(({ stories }) => {
-        renderStories(stories)
+        return renderUserStories(userId);
 
       })
       .catch((error) => {
         console.log("Failure");
       })
   });
+
+  $logo.on('click', () => {
+    renderAllStories();
+    $storyForm.addClass('hidden');
+  })
+
+  $myProfile.on('click', () => {
+    renderUserStories(userId);
+    $storyForm.addClass('hidden');
+  })
 
   $createStory.on('click', () => {
     $storyForm.removeClass('hidden');
@@ -93,13 +102,8 @@ $(() => {
   });
 
 
+  renderAllStories();
 
-  $.get('/stories')
-    .then((response) => {
-
-      const { stories } = response
-      renderStories(stories)
-    })
 
 });
 
@@ -111,28 +115,24 @@ const escapeText = function (str) {
 }
 
 
-const createStoryElement = function ({ username, title, content, completed, votes, created  }) {
+const createStoryElement = function ({ username, title, content, completed, votes, created }) {
   const htmlElement = `
     <article class="story">
     <header>
-    <span>
-    <span>${escapeText(title)} by ${escapeText(username)}</span>
-    </span>
+      <span>${escapeText(title)} by ${escapeText(username)}</span>
     </header>
+
     <p class="story-content">${escapeText(content)}</p>
+
     <footer>
-    <span>${created}</span>
-    <span>
-    Completed ${completed}
-    </span>
-    <div class="thumbs-container">
-    <span>
-    <span>
-    Votes ${votes}
-    </span>
-          <i class="fa-regular fa-thumbs-up"></i>
-          <i class="fa-regular fa-thumbs-down"></i>
-        </span>
+      <span>${created}</span>
+      <span>Completed ${completed}</span>
+      <div class="thumbs-container">
+      <span>Votes ${votes}</span>
+      <div>
+        <i class="fa-regular fa-thumbs-up"></i>
+        <i class="fa-regular fa-thumbs-down"></i>
+      </div>
       </div>
     </footer>
     </article>
@@ -150,4 +150,22 @@ const renderStories = function (stories) {
     $storiesContainer.prepend($story);
   }
 
+}
+function renderAllStories() {
+  $.get('/stories')
+    .then((response) => {
+
+      const { stories } = response;
+      renderStories(stories);
+    });
+}
+
+
+function renderUserStories(id) {
+  return $.get(`/users/${id}/stories`)
+
+    .then(({ stories }) => {
+      renderStories(stories)
+
+    })
 }

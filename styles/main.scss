@@ -68,6 +68,10 @@ h1 {
   min-height: 150px;
   max-height: 250px;
   overflow-y: auto;
+  footer{
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 
