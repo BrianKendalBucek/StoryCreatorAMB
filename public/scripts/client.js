@@ -9,15 +9,18 @@ const mockStories = [
 $(() => {
   const $logout = $('#logout');
   const $login = $('#login');
-  const $createButton = $('header .create');
-  const $storyForm = $('main #story-form');
+  const $createStory = $('header .create');
+  const $myProfile = $('header .profile')
+  const $storyForm = $('main .story-form');
   const $cancelButton = $storyForm.find('.cancel');
   const $storyContainer = $('main .story-container');
   let userId = '';
 
+
   $logout.on('click', () => {
     $logout.hide();
     $login.show();
+    $myProfile.hide();
   })
 
   $login.on('submit', (event) => {
@@ -35,11 +38,12 @@ $(() => {
         $login.hide();
         $logout.show();
         $input.val('');
+        $myProfile.show();
+        $createStory.show();
         return $.get(`/users/${userId}/stories`)
       })
-      .then((response) => {
-        console.log(response)
-        renderStories(response)
+      .then(({ stories }) => {
+        renderStories(stories)
 
       })
       .catch((error) => {
@@ -47,13 +51,13 @@ $(() => {
       })
   });
 
-  $createButton.on('click', () => {
-    $storyForm.show();
+  $createStory.on('click', () => {
+    $storyForm.removeClass('hidden');
     $storyContainer.hide();
   })
 
   $cancelButton.on('click', () => {
-    $storyForm.hide();
+    $storyForm.addClass('hidden');
     $storyContainer.show();
   })
 
@@ -86,7 +90,9 @@ $(() => {
 
   $.get('/stories')
     .then((response) => {
-      renderStories(mockStories)
+
+      const { stories } = response
+      renderStories(stories)
     })
 
 });
@@ -98,24 +104,30 @@ const escapeText = function (str) {
   return div.innerHTML;
 }
 
-const createStoryElement = function ({ username, title, text }) {
-  const timestamp = 'tuesday'
+
+const createStoryElement = function ({ username, title, content, completed, votes, created  }) {
   const htmlElement = `
     <article class="story">
     <header>
     <span>
-    <span>${title}</span>
+    <span>${escapeText(title)} by ${escapeText(username)}</span>
     </span>
-    <span>${username}</span>
     </header>
-    <p>${escapeText(text)}</p>
+    <p class="story-content">${escapeText(content)}</p>
     <footer>
-    <span>${timestamp}</span>
+    <span>${created}</span>
     <span>
-    <i class="fa-solid fa-flag"></i>
-    <i class="fa-solid fa-retweet"></i>
-    <i class="fa-solid fa-heart"></i>
+    Completed ${completed}
     </span>
+    <div class="thumbs-container">
+    <span>
+    <span>
+    Votes ${votes}
+    </span>
+          <i class="fa-regular fa-thumbs-up"></i>
+          <i class="fa-regular fa-thumbs-down"></i>
+        </span>
+      </div>
     </footer>
     </article>
     `
@@ -124,7 +136,8 @@ const createStoryElement = function ({ username, title, text }) {
 
 
 const renderStories = function (stories) {
-  const $storiesContainer = $(`#stories-container`)
+  console.log(stories)
+  const $storiesContainer = $(`.stories-container`)
   $storiesContainer.html("")
   for (const story of stories) {
     const $story = createStoryElement(story);

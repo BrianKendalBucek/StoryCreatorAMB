@@ -15,39 +15,48 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/client.js"></script>
-<!-- This link for font font-awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- This link for font font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 
-<%- include('partials/_header') %>
-
-  <div class="intro">
-    <h1>Welcome to Shorties</h1>
-    <h2>Tell your story, or make one better</h2>
-    <form id="login">
-    <input type="text" placeholder="username" name="username">
-    <!-- <input type="text" placeholder="password"> -->
-      <button type="submit">Login</button>
-    </form>
-      <button id="logout" class="hidden">logout</button>
-  </div>
-  <div class="story-containerDiv">
-    <form class="story-form" >
-          <textarea name="text"></textarea>
+  <%- include('partials/_header') %>
+    <header>
+      <div class="intro">
+        <h1>Welcome to Shorties</h1>
+        <h2>Tell your story, or make one better</h2>
+        <form id="login">
+          <input type="text" placeholder="username" name="username">
+          <button type="submit">Login</button>
         </form>
-        <div class="thumbs-container">
-          <span>
-            <i class="fa-regular fa-thumbs-up"></i>
-            <i class="fa-regular fa-thumbs-down"></i>
-          </span>
-        </div>
+        <button id="logout" hidden>logout</button>
       </div>
-  </div>
-</div>
+    </header>
 
+    <main>
+      <form class="story-form hidden">
+        <header>
+          <label for="title">
+            Story Title
+          </label>
+          <input type='text' name="title" class='title' />
+        </header>
+        <div>
+          <label for="form-content">
+            Story Body
+          </label>
+          <textarea name="form-content" class="form-content"></textarea>
+      </div>
+      <button type='button' class="cancel">Cancel</button>
+      <button type="submit" class="submit">Submit</button>
+    </form>
 
+    <div class="stories-container">
+    </div>
+    </main>
 </body>
 
 </html>
