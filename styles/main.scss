@@ -1,6 +1,9 @@
 body {
- height: 1000px;
- font-family: fantasy;
+  height: 1000px;
+  font-family: fantasy;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a {
@@ -20,10 +23,14 @@ main {
   flex-direction: column;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .intro {
   height: 450px;
   color: white;
-  background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
+  // background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -32,6 +39,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 h1 {
@@ -67,9 +75,13 @@ h1 {
   background-color: lightgrey;
   border-bottom: 3px solid darkgrey;
   color: black;
+
+  width: 100%;
+
   span {
     cursor: pointer;
   }
+
 }
 
 .nav-bar {
@@ -78,6 +90,10 @@ h1 {
   align-items: center;
   height: 3rem;
 }
+ .create-and-profile {
+  display: flex;
+ }
+
 
 .create, .profile, .shorties-link {
   text-decoration: none;
@@ -86,137 +102,186 @@ h1 {
 
 .create {
   padding-right: 2.5rem;
+  margin: 2rem;
+}
+.profile{
+  margin: 2rem;
 }
 
 .shorties-link {
   font-size: 1.5rem;
+  margin: 2rem;
 }
+
+
+.story-form{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.story-form textarea {
+
+  border: none;
+  border-bottom: 3px solid black  ;
+  width: 600px;
+  height: 240px;
+
+
+}
+.text{
+  width: 100%
+}
+.thumbs-container{
+
+display: flex;
+justify-content: end;
+
+}
+
+
+
+
+
+
 
 // *********************
 // CSS for Profile.ejs
 
-body {
-  font-family: fantasy;
-  background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
-  background-size: 1440px;
-}
 
-h1 {
-  margin: 5rem;
-  font-size: 3rem;
-}
 
-.multi-story-container {
-  display: flex;
-  flex-direction: column;
 
-  width: 50rem;
-  margin: 3rem;
-}
+   body {
+     font-family: fantasy;
+     background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
+     background-size: 1440px;
+    }
 
-.single-story-container {
-  border: 1px solid black;
-  margin: 1rem;
-  border-radius: 25px;
-  background-color: white;
-}
+    h1 {
+      margin: 5rem;
+      font-size: 3rem;
+    }
 
-p {
-  padding: 1rem;
-}
+    .multi-story-container {
+      display: flex;
+      flex-direction: column;
 
-.in-progress {
-  display: flex;
-  justify-content: space-between;
-}
+      width: 50rem;
+      margin: 3rem;
+    }
 
-.complete-button {
-  margin: 2rem;
-  height: 2rem;
-}
+    .single-story-container {
+      border: 1px solid black;
+      margin: 1rem;
+      border-radius: 25px;
+      background-color: white;
+    }
 
-// **********************
+    p {
+      padding: 1rem;
+    }
+
+    .in-progress {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .complete-button {
+      margin: 2rem;
+      height: 2rem;
+    }
+
+
+
 
 // CSS for Contributions
 
-body {
-  font-family: fantasy;
-  background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
-  background-size: cover;
-}
+#contributions {
 
-.main-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  margin-top: 4rem;
-}
 
-.profile-button {
-  margin-left: 80rem;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  body {
+    font-family: fantasy;
+    background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
+    background-size: cover;
+  }
 
-.author-name {
-  margin-top: 3rem;
-}
+  .main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.story-original {
-  background-color: white;
-  border-radius: 25px;
-  margin-top: 2rem;
-  width: 50rem;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    margin-top: 4rem;
+  }
 
-.story-original-text {
-  padding: 1rem;
-}
+  .profile-button {
+    margin-left: 80rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-.button-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  .author-name {
+    margin-top: 3rem;
+  }
 
-.story-status {
-  justify-content: flex-end;
+  .story-original {
+    background-color: white;
+    border-radius: 25px;
+    margin-top: 2rem;
+    width: 50rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-  margin: 1rem;
-}
+  .story-original-text {
+    padding: 1rem;
+  }
 
-.story-status-div {
-  margin-top: 1rem;
-  background-color: white;
-  border-radius: 25px;
-}
+  .button-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.submit-button {
-  margin: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  .story-status {
+    justify-content: flex-end;
 
-.story-addition {
-  margin-top: 3rem;
-  width: 60rem;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 1px solid black;
-  border-radius: 25px;
-  background-color: white;
-}
+    margin: 1rem;
+  }
 
-.story-addition-text {
-  padding: 1rem;
-}
+  .story-status-div {
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 25px;
+  }
 
-.acceptance-button {
-  display: flex;
-  justify-content: flex-end;
+  .submit-button {
+    margin: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-  margin-top: 2rem;
-}
+  .story-addition {
+    margin-top: 3rem;
+    width: 60rem;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: white;
+  }
 
-.button-accept, .button-decline {
-  margin: 1rem;
+  .story-addition-text {
+    padding: 1rem;
+  }
+
+  .acceptance-button {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 2rem;
+  }
+
+  .button-accept, .button-decline {
+    margin: 1rem;
+  }
+
 }

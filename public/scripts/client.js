@@ -11,7 +11,7 @@ $(() => {
   const $login = $('#login');
   const $createStory = $('header .create');
   const $myProfile = $('header .profile')
-  const $storyForm = $('main #story-form');
+  const $storyForm = $('main .story-form');
   const $cancelButton = $storyForm.find('.cancel');
   const $storyContainer = $('main .story-container');
   let userId = '';
@@ -39,6 +39,7 @@ $(() => {
         $logout.show();
         $input.val('');
         $myProfile.show();
+        $createStory.show();
         return $.get(`/users/${userId}/stories`)
       })
       .then(({ stories }) => {
@@ -51,12 +52,12 @@ $(() => {
   });
 
   $createStory.on('click', () => {
-    $storyForm.show();
+    $storyForm.removeClass('hidden');
     $storyContainer.hide();
   })
 
   $cancelButton.on('click', () => {
-    $storyForm.hide();
+    $storyForm.addClass('hidden');
     $storyContainer.show();
   })
 
@@ -116,11 +117,17 @@ const createStoryElement = function ({ username, title, content, completed, vote
     <footer>
     <span>${created}</span>
     <span>
-    Votes ${votes}
-    </span>
-    <span>
     Completed ${completed}
     </span>
+    <div class="thumbs-container">
+    <span>
+    <span>
+    Votes ${votes}
+    </span>
+          <i class="fa-regular fa-thumbs-up"></i>
+          <i class="fa-regular fa-thumbs-down"></i>
+        </span>
+      </div>
     </footer>
     </article>
     `
