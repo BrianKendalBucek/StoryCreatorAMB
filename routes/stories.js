@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
   const { getUser, getStories, getUserStories } = require('../queries');
 
+
 router.get('/', (req, res) => {
 
 
@@ -24,6 +25,8 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  console.log(req.body)
+  const { storyTitle, storyBody, userId} = req.body;
 
 })
 
