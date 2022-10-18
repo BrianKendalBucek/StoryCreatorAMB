@@ -13,11 +13,11 @@ $(() => {
   const $myProfile = $('header .profile')
   const $storyForm = $('main .story-form');
   const $cancelButton = $storyForm.find('.cancel');
-  const $storyContainer = $('main .story-container');
-  let userId = '';
+  const $storiesContainer = $('main .stories-container');
   const $intro = $('header .intro');
   const $slogan = $('header #slogan');
   const $logo = $('header .shorties-link');
+  let userId = '';
 
 
   $logout.on('click', () => {
@@ -59,21 +59,31 @@ $(() => {
   $logo.on('click', () => {
     renderAllStories();
     $storyForm.addClass('hidden');
+    $storiesContainer.show();
   })
 
   $myProfile.on('click', () => {
     renderUserStories(userId);
     $storyForm.addClass('hidden');
+    $storiesContainer.show();
   })
 
   $createStory.on('click', () => {
     $storyForm.removeClass('hidden');
-    $storyContainer.hide();
+    $storiesContainer.hide();
   })
 
   $cancelButton.on('click', () => {
     $storyForm.addClass('hidden');
-    $storyContainer.show();
+    $storiesContainer.show();
+  })
+
+  $storiesContainer.on('click', '.story header', function(event)  {
+    console.log('hi')
+    const $thisStory = $(this).closest('.story')
+    console.log($thisStory)
+    $storiesContainer.find('.story').hide()
+    $thisStory.show();
   })
 
   $storyForm.on('submit', (event) => {
@@ -120,30 +130,29 @@ const createStoryElement = function ({ username, title, content, completed, vote
     <article class="story">
     <header>
       <span>${escapeText(title)} by ${escapeText(username)}</span>
-    </header>
+      </header>
 
-    <p class="story-content">${escapeText(content)}</p>
+      <p class="story-content">${escapeText(content)}</p>
 
-    <footer>
+      <footer>
       <span>${created}</span>
       <span>Completed ${completed}</span>
       <div class="thumbs-container">
       <span>Votes ${votes}</span>
       <div>
-        <i class="fa-regular fa-thumbs-up"></i>
-        <i class="fa-regular fa-thumbs-down"></i>
+      <i class="fa-regular fa-thumbs-up"></i>
+      <i class="fa-regular fa-thumbs-down"></i>
       </div>
       </div>
-    </footer>
-    </article>
-    `
-  return htmlElement;
-}
+      </footer>
+      </article>
+      `
+      return htmlElement;
+    }
 
 
 const renderStories = function (stories) {
-  console.log(stories)
-  const $storiesContainer = $(`.stories-container`)
+  const $storiesContainer = $('main .stories-container');
   $storiesContainer.html("")
   for (const story of stories) {
     const $story = createStoryElement(story);
