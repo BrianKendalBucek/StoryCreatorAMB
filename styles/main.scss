@@ -1,291 +1,89 @@
 body {
   height: 1000px;
   font-family: fantasy;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+ }
 
-a {
-  color: black;
-}
+ a {
+   color: black;
+ }
 
-a:hover {
-  color: red;
-}
+ a:hover {
+   color: red;
+ }
 
-a:focus {
-  color: green;
-}
+ a:focus {
+   color: green;
+ }
 
-main {
-  display: flex;
-  flex-direction: column;
-}
+ .intro {
+   height: 100%;
+   color: white;
+   background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
+   background-size: cover;
+   background-attachment: fixed;
 
-.hidden {
-  display: none !important;
-}
+   // FLEX
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
 
-.intro {
-  height: 450px;
-  color: white;
-  // background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+ h1 {
+   height: 5px;
+ }
 
-  // FLEX
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-}
+ .hidden {
+   display: none;
+ }
 
-h1 {
-  height: 5px;
-}
+ // .story-container{
+   // display: flex;
+   // flex-direction: column;
+   // border: 2px;
+   // border-style: solid;
+   // justify-content: start;
+   // align-items: center;
+   // padding-top: 50px;
+   // padding-bottom: 50px;
+   // height: 100%;
+   // gap: 75px
+ // }
 
-
-.stories-container{
-  display: flex;
-  flex-direction: column;
-  border: 2px;
-  border-style: solid;
-  justify-content: start;
-  align-items: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  height: 100%;
-  gap: 75px
-}
-
-.story {
-
-  background-color: rgb(26, 121, 162);
-  width: 75%;
-  height: auto;
-  min-height: 150px;
-  max-height: 250px;
-  overflow-y: auto;
-  footer{
-    display: flex;
-    justify-content: space-between;
-  }
-}
-
-
-.heads {
-  background-color: lightgrey;
-  border-bottom: 3px solid darkgrey;
-  color: black;
-
-  width: 100%;
-
-  span {
-    cursor: pointer;
-  }
-
-}
-
-.nav-bar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 3rem;
-}
- .create-and-profile {
-  display: flex;
+ .story-box {
+   margin-top: 2rem;
+   background-color: white;
+   border: 1px solid black;
+   border-radius: 25px;
+   width: 75%;
+   height: auto;
+   min-height: 100px;
+   max-height: 200px;
+   overflow-y: auto;
  }
 
 
-.create, .profile, .shorties-link {
-  text-decoration: none;
+ .heads {
+   background-color: lightgrey;
+   border-bottom: 3px solid darkgrey;
+   color: black;
+ }
 
-}
+ .nav-bar {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 3rem;
+ }
 
-.create {
-  padding-right: 2.5rem;
-  margin: 2rem;
-}
-.profile{
-  margin: 2rem;
-}
+ .create, .profile, .shorties-link {
+   text-decoration: none;
 
-.shorties-link {
-  font-size: 1.5rem;
-  margin: 2rem;
-}
+ }
 
+ .create {
+   padding-right: 2.5rem;
+ }
 
-.story-form{
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100px;
-}
-
-.story-form textarea {
-
-  border: none;
-  border-bottom: 3px solid black  ;
-  width: 600px;
-  height: 240px;
-
-
-}
-.text{
-  width: 100%
-}
-.thumbs-container{
-
-display: flex;
-justify-content: end;
-
-}
-
-
-
-
-
-
-
-// *********************
-// CSS for Profile.ejs
-
-
-
-
-   body {
-     font-family: fantasy;
-     background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
-     background-size: 1440px;
-    }
-
-    h1 {
-      margin: 5rem;
-      font-size: 3rem;
-    }
-
-    .multi-story-container {
-      display: flex;
-      flex-direction: column;
-
-      width: 50rem;
-      margin: 3rem;
-    }
-
-    .single-story-container {
-      border: 1px solid black;
-      margin: 1rem;
-      border-radius: 25px;
-      background-color: white;
-    }
-
-    p {
-      padding: 1rem;
-    }
-
-    .in-progress {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .complete-button {
-      margin: 2rem;
-      height: 2rem;
-    }
-
-
-
-
-// CSS for Contributions
-
-#contributions {
-
-
-
-  body {
-    font-family: fantasy;
-    background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
-    background-size: cover;
-  }
-
-  .main-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-top: 4rem;
-  }
-
-  .profile-button {
-    margin-left: 80rem;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .author-name {
-    margin-top: 3rem;
-  }
-
-  .story-original {
-    background-color: white;
-    border-radius: 25px;
-    margin-top: 2rem;
-    width: 50rem;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .story-original-text {
-    padding: 1rem;
-  }
-
-  .button-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .story-status {
-    justify-content: flex-end;
-
-    margin: 1rem;
-  }
-
-  .story-status-div {
-    margin-top: 1rem;
-    background-color: white;
-    border-radius: 25px;
-  }
-
-  .submit-button {
-    margin: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .story-addition {
-    margin-top: 3rem;
-    width: 60rem;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid black;
-    border-radius: 25px;
-    background-color: white;
-  }
-
-  .story-addition-text {
-    padding: 1rem;
-  }
-
-  .acceptance-button {
-    display: flex;
-    justify-content: flex-end;
-
-    margin-top: 2rem;
-  }
-
-  .button-accept, .button-decline {
-    margin: 1rem;
-  }
-
-}
+ .shorties-link {
+   font-size: 1.5rem;
+ }
