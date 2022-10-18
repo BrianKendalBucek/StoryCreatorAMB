@@ -116,6 +116,7 @@ const escapeText = function (str) {
 const createStoryElement = function ({ username, title, content, completed, votes, created }) {
   const htmlElement = `
     <article class="story">
+    <div class="all-box-content">
     <header>
       <span>${escapeText(title)} by ${escapeText(username)}</span>
       </header>
@@ -133,6 +134,7 @@ const createStoryElement = function ({ username, title, content, completed, vote
       </div>
       </div>
       </footer>
+      </div>
       </article>
       `
       return htmlElement;
