@@ -1,10 +1,4 @@
-const mockStories = [
-  {
-    username: 'ana',
-    title: 'hi',
-    text: 'asjdfkhasdfjs lkdfjlskdjflksdflksdfkdfl',
-  }
-]
+
 
 $(() => {
   const $logout = $('#logout');
@@ -79,7 +73,7 @@ $(() => {
   })
 
   $storiesContainer.on('click', '.story header', function(event)  {
-    console.log('hi')
+
     const $thisStory = $(this).closest('.story')
     console.log($thisStory)
     $storiesContainer.find('.story').hide()
@@ -89,20 +83,14 @@ $(() => {
   $storyForm.on('submit', (event) => {
     event.preventDefault();
     const $titleInput = $storyForm.find('input.title');
-    const $bodyInput = $storyForm.find('input.body');
+    const $bodyInput = $storyForm.find('textarea.form-content');
     const storyTitle = $titleInput.val();
     const storyBody = $bodyInput.val();
 
-    console.log(userId)
+
     $.post('/stories', { storyTitle, storyBody, userId })
       .then((response) => {
 
-
-
-
-        $login.hide();
-        $logout.show();
-        $input.val('');
         return $.get(`/users/${id}/stories`)
       })
 
