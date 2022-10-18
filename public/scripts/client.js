@@ -59,11 +59,13 @@ $(() => {
   $logo.on('click', () => {
     renderAllStories();
     $storyForm.addClass('hidden');
+    $storiesContainer.show();
   })
 
   $myProfile.on('click', () => {
     renderUserStories(userId);
     $storyForm.addClass('hidden');
+    $storiesContainer.show();
   })
 
   $createStory.on('click', () => {
