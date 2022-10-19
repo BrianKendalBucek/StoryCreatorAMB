@@ -41,6 +41,17 @@ const getUserStories = (id) => {
     });
 };
 
+const createStory = () => {
+  const query = `INSERT INTO stories (title, content, author_id)
+  VALUES ($1, $2, $3)
+  RETURN *
+  `;
+  return db.query(query, [title, content, author_id])
+    .then(data => {
+      return data.rows
+    });
+}
 
 
-module.exports = { getUser, getStories, getUserStories };
+
+module.exports = { getUser, getStories, getUserStories, createStory};

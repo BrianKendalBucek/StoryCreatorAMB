@@ -16,6 +16,8 @@ router.get('/', (req, res) => {
     });
 });
 
+
+
 router.get('/new', (req, res) => {
 
 })
@@ -25,8 +27,14 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log(req.body)
   const { storyTitle, storyBody, userId} = req.body;
+
+  createStory()
+  .then(response => {
+
+  })
+
+
 
 })
 
