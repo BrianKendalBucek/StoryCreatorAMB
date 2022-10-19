@@ -41,6 +41,9 @@ h1 {
   justify-content: space-around;
   align-items: center;
   height: 3rem;
+  span {
+    cursor: pointer;
+  }
 }
 
 .create,
@@ -128,6 +131,7 @@ button {
   border-radius: 15px;
   padding: 0.5rem;
   border: 3px solid darkgrey;
+  cursor: pointer;
 }
 
 button:hover {
