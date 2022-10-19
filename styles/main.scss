@@ -1,70 +1,39 @@
 body {
- height: 1000px;
- font-family: fantasy;
+  font-family: fantasy;
 }
 
-a {
-  color: black;
-}
-
-a:hover {
-  color: red;
-}
-
-a:focus {
-  color: green;
-}
-
-.intro {
-  height: 450px;
-  color: white;
+.all {
+  min-height: 100vh;
+  color: rgb(105, 105, 105);
   background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
-  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 
   // FLEX
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
   height: 5px;
+  margin-bottom: 3rem;
 }
 
 .hidden {
   display: none;
 }
 
-.story-conteiner{
-  display: flex;
-  flex-direction: column;
-  border: 2px;
-  border-style: solid;
-  justify-content: start;
-  align-items: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  height: 100%;
-  gap: 75px
-}
-
-.story-box {
-
-  background-color: rgb(26, 121, 162);
-  width: 75%;
-  height: auto;
-  min-height: 150px;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-
 .heads {
-  background-color: lightgrey;
+  background-color: rgb(105, 105, 105);
   border-bottom: 3px solid darkgrey;
-  color: black;
+  color: rgb(245, 196, 196);
 }
 
 .nav-bar {
@@ -74,9 +43,14 @@ h1 {
   height: 3rem;
 }
 
-.create, .profile, .shorties-link {
+.create,
+.profile,
+.shorties-link {
   text-decoration: none;
+}
 
+.shorties-link {
+  margin-top: 0.5rem;
 }
 
 .create {
@@ -85,4 +59,77 @@ h1 {
 
 .shorties-link {
   font-size: 1.5rem;
+}
+
+.story {
+  border: 3px solid darkgrey;
+  border-radius: 25px;
+  margin: 2rem;
+  background-color: rgb(245, 196, 196);
+  color: rgb(105, 105, 105);
+}
+
+.all-box-content {
+  margin: 1rem;
+}
+
+.create-your-story {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.story-head,
+.label-and-text {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cancel,
+.submit {
+  margin: 1rem;
+}
+
+.form-content {
+  width: 35rem;
+  outline: none;
+  border: 3px solid darkgrey;
+  border-radius: 15px;
+  background-color: rgb(245, 196, 196);
+  color: rgb(105, 105, 105);
+}
+
+textarea {
+  padding: 1rem;
+  caret-color: white;
+}
+
+input {
+  outline: none;
+  border: 3px solid darkgrey;
+  border-radius: 25px;
+  background-color: rgb(245, 196, 196);
+  text-align: center;
+  color: rgb(105, 105, 105);
+  padding: 0.5rem;
+  caret-color: white;
+}
+
+button {
+  background-color: rgb(105, 105, 105);
+  color: rgb(245, 196, 196);
+  border-radius: 15px;
+  padding: 0.5rem;
+  border: 3px solid darkgrey;
+}
+
+button:hover {
+  background-color: darkgrey;
 }

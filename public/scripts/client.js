@@ -1,18 +1,26 @@
-const mockStories = [
-  {
-    username: 'ana',
-    title: 'hi',
-    text: 'asjdfkhasdfjs lkdfjlskdjflksdflksdfkdfl',
-  }
-]
+
 
 $(() => {
   const $logout = $('#logout');
   const $login = $('#login');
+  const $createStory = $('header .create');
+  const $myProfile = $('header .profile')
+  const $storyForm = $('main .story-form');
+  const $cancelButton = $storyForm.find('.cancel');
+  const $storiesContainer = $('main .stories-container');
+  const $intro = $('header .intro');
+  const $slogan = $('header #slogan');
+  const $logo = $('header .shorties-link');
+  let userId = '';
+
 
   $logout.on('click', () => {
-    $logout.addClass('hidden');
-    $login.removeClass('hidden');
+    $logout.hide();
+    $login.show();
+    $myProfile.hide();
+    $createStory.hide();
+    $intro.removeClass('hidden');
+    $slogan.addClass('hidden');
   })
 
   $login.on('submit', (event) => {
@@ -24,17 +32,17 @@ $(() => {
     $.post('/login', { username })
       .then((response) => {
 
-        const id = response.id
+        userId = response.id
 
 
-        $login.addClass('hidden');
-        $logout.removeClass('hidden');
+        $login.hide();
+        $logout.show();
         $input.val('');
-        return $.get(`/users/${id}/stories`)
-      })
-      .then((response) => {
-        console.log(response)
-        renderStories(response)
+        $myProfile.show();
+        $createStory.show();
+        $intro.addClass('hidden');
+        $slogan.removeClass('hidden');
+        return renderUserStories(userId);
 
       })
       .catch((error) => {
@@ -42,10 +50,58 @@ $(() => {
       })
   });
 
-  $.get('/stories')
-    .then((response) => {
-      renderStories(mockStories)
-    })
+  $logo.on('click', () => {
+    renderAllStories();
+    $storyForm.addClass('hidden');
+    $storiesContainer.show();
+  })
+
+  $myProfile.on('click', () => {
+    renderUserStories(userId);
+    $storyForm.addClass('hidden');
+    $storiesContainer.show();
+  })
+
+  $createStory.on('click', () => {
+    $storyForm.removeClass('hidden');
+    $storiesContainer.hide();
+  })
+
+  $cancelButton.on('click', () => {
+    $storyForm.addClass('hidden');
+    $storiesContainer.show();
+  })
+
+  $storiesContainer.on('click', '.story header', function(event)  {
+
+    const $thisStory = $(this).closest('.story')
+    console.log($thisStory)
+    $storiesContainer.find('.story').hide()
+    $thisStory.show();
+  })
+
+  $storyForm.on('submit', (event) => {
+    event.preventDefault();
+    const $titleInput = $storyForm.find('input.title');
+    const $bodyInput = $storyForm.find('textarea.form-content');
+    const storyTitle = $titleInput.val();
+    const storyBody = $bodyInput.val();
+
+
+    $.post('/stories', { storyTitle, storyBody, userId })
+      .then((response) => {
+
+        return $.get(`/users/${id}/stories`)
+      })
+
+      .catch((error) => {
+        console.log("Failure");
+      })
+  });
+
+
+  renderAllStories();
+
 
 });
 
@@ -56,37 +112,59 @@ const escapeText = function (str) {
   return div.innerHTML;
 }
 
-const createStoryElement = function ({ username, title, text }) {
-  const timestamp = 'tuesday'
+
+const createStoryElement = function ({ username, title, content, completed, votes, created }) {
   const htmlElement = `
     <article class="story">
+    <div class="all-box-content">
     <header>
-    <span>
-    <span>${title}</span>
-    </span>
-    <span>${username}</span>
-    </header>
-    <p>${escapeText(text)}</p>
-    <footer>
-    <span>${timestamp}</span>
-    <span>
-    <i class="fa-solid fa-flag"></i>
-    <i class="fa-solid fa-retweet"></i>
-    <i class="fa-solid fa-heart"></i>
-    </span>
-    </footer>
-    </article>
-    `
-  return htmlElement;
-}
+      <span>${escapeText(title)} by ${escapeText(username)}</span>
+      </header>
+
+      <p class="story-content">${escapeText(content)}</p>
+
+      <footer>
+      <span>${created}</span>
+      <span>Completed ${completed}</span>
+      <div class="thumbs-container">
+      <span>Votes ${votes}</span>
+      <div>
+      <i class="fa-regular fa-thumbs-up"></i>
+      <i class="fa-regular fa-thumbs-down"></i>
+      </div>
+      </div>
+      </footer>
+      </div>
+      </article>
+      `
+      return htmlElement;
+    }
 
 
 const renderStories = function (stories) {
-  const $storiesContainer = $(`#stories-container`)
+  const $storiesContainer = $('main .stories-container');
   $storiesContainer.html("")
   for (const story of stories) {
     const $story = createStoryElement(story);
     $storiesContainer.prepend($story);
   }
 
+}
+function renderAllStories() {
+  $.get('/stories')
+    .then((response) => {
+
+      const { stories } = response;
+      renderStories(stories);
+    });
+}
+
+
+function renderUserStories(id) {
+  return $.get(`/users/${id}/stories`)
+
+    .then(({ stories }) => {
+      renderStories(stories)
+
+    })
 }
