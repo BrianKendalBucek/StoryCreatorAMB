@@ -41,6 +41,22 @@ const getUserStories = (id) => {
     });
 };
 
+// const createStory = (story) => {
+
+//   const createStoryQuery =
+//   `INSERT INTO stories (title, content, author_id)
+//   VALUES ($1, $2, $3) RETURNING *;`;
+
+//   const into = [
+//     story.title,
+//     story.content,
+//     story.author_id
+//   ];
+
+//   return pool.query(createStoryQuery, info)
+//     .then(res => res.rows[0]);
+// };
+
 
 
 module.exports = { getUser, getStories, getUserStories };
