@@ -7,35 +7,30 @@ const getUser = (username) => {
     });
 };
 
+// LEFT JOIN contributions ON stories.id = contributions.story_id
 
 const getStories = () => {
   const query = `SELECT *  FROM stories
-   JOIN contributions ON stories.id = contributions.story_id
-   JOIN users ON contributions.user_id = users.id
-   LIMIT 10;`
+   LEFT JOIN users ON stories.author_id = users.id
+   ORDER BY stories.id;`
   return db.query(query)
-    .then(data => {
-      return data.rows;
+  .then(data => {
+    // console.log("++++++++++++", data.rows);
+    // return data.rows;
     });
 };
 
-// SELECT reservations.id, properties.title, properties.cost_per_night, reservations.start_date, avg(rating) as average_rating
-// FROM reservations
-// JOIN properties ON reservations.property_id = properties.id
-// JOIN property_reviews ON properties.id = property_reviews.property_id
-// WHERE reservations.guest_id = 1
-// GROUP BY properties.id, reservations.id
-// ORDER BY reservations.start_date
-// LIMIT 10;
-
+// LEFT JOIN contributions ON stories.id = contributions.story_id
 
 const getUserStories = (id) => {
-  const query = `SELECT *  FROM stories
-   JOIN contributions ON stories.id = contributions.story_id
-   JOIN users ON contributions.user_id = users.id
-   WHERE users.id = $1;`
+
+  const query = `SELECT stories.*, users.* FROM stories
+   LEFT JOIN users ON stories.author_id = users.id
+   WHERE stories.author_id = $1;`
   return db.query(query, [id])
     .then(data => {
+      // console.log("**************", data.rows);
+      // console.log("______________");
       return data.rows;
     });
 };

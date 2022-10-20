@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
   getStories()
     .then(stories => {
-      console.log(stories)
+      // console.log(stories)
       res.json( { stories } );
     })
     .catch(err => {
