@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
   getStories()
     .then(stories => {
-      console.log(stories)
+
       res.json( { stories } );
     })
     .catch(err => {
@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log(req.body)
+
   const { storyTitle, storyBody, userId} = req.body;
 
 })

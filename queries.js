@@ -37,7 +37,6 @@ const getUserStories = (id) => {
    LIMIT 10;`
   return db.query(query, [id])
     .then(data => {
-      (console.log(data.rows))
       return data.rows;
     });
 };

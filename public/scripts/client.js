@@ -68,6 +68,7 @@ $(() => {
   $createStory.on('click', () => {
     $storyForm.removeClass('hidden');
     $storiesContainer.hide();
+    $storyForm.find('button.complete').hide();
   })
 
   $cancelButton.on('click', () => {
@@ -83,7 +84,18 @@ $(() => {
     $thisStory.show();
     $storyForm.removeClass('hidden');
     const author = $thisStory.attr('author');
-    console.log(author)
+    const storyId = $thisStory.attr('[story-id]');
+    const $complete = $storyForm.find('button.complete');
+    if (author == userId) {
+      $complete.show();
+    } else {
+      $complete.hide();
+    }
+
+    $complete.on('click', () => {
+      $.patch('/stories/' + storyId, {completed:true})
+
+    })
   })
 
 
@@ -121,9 +133,9 @@ const escapeText = function (str) {
 }
 
 
-const createStoryElement = function ({ username, title, content, completed, votes, created, author_id }) {
+const createStoryElement = function ({ username, title, content, completed, votes, created, author_id, id }) {
   const htmlElement = `
-    <article class="story" author="${author_id}">
+    <article class="story" author="${author_id}" [story-id]="${id}">
     <div class="all-box-content">
     <header>
       <span>${escapeText(title)} by ${escapeText(username)}</span>
@@ -145,7 +157,7 @@ const createStoryElement = function ({ username, title, content, completed, vote
       </div>
       </article>
       `
-      console.log(htmlElement)
+
       return htmlElement;
     }
 
