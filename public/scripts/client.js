@@ -78,10 +78,15 @@ $(() => {
   $storiesContainer.on('click', '.story header', function(event)  {
 
     const $thisStory = $(this).closest('.story')
-    console.log($thisStory)
+
     $storiesContainer.find('.story').hide()
     $thisStory.show();
+    $storyForm.removeClass('hidden');
+    const author = $thisStory.attr('author');
+    console.log(author)
   })
+
+
 
   $storyForm.on('submit', (event) => {
     event.preventDefault();
@@ -116,9 +121,9 @@ const escapeText = function (str) {
 }
 
 
-const createStoryElement = function ({ username, title, content, completed, votes, created }) {
+const createStoryElement = function ({ username, title, content, completed, votes, created, author_id }) {
   const htmlElement = `
-    <article class="story">
+    <article class="story" author="${author_id}">
     <div class="all-box-content">
     <header>
       <span>${escapeText(title)} by ${escapeText(username)}</span>
@@ -140,6 +145,7 @@ const createStoryElement = function ({ username, title, content, completed, vote
       </div>
       </article>
       `
+      console.log(htmlElement)
       return htmlElement;
     }
 

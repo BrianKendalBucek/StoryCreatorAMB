@@ -10,8 +10,8 @@ const getUser = (username) => {
 
 const getStories = () => {
   const query = `SELECT *  FROM stories
-   JOIN contributions ON stories.id = contributions.story_id
-   JOIN users ON contributions.user_id = users.id
+  JOIN users ON stories.author_id = users.id
+  JOIN contributions ON stories.id = contributions.story_id
    LIMIT 10;`
   return db.query(query)
   .then(data => {
@@ -31,12 +31,13 @@ const getStories = () => {
 
 const getUserStories = (id) => {
   const query = `SELECT *  FROM stories
+  JOIN users ON stories.author_id = users.id
    JOIN contributions ON stories.id = contributions.story_id
-   JOIN users ON contributions.user_id = users.id
    WHERE users.id = $1
    LIMIT 10;`
   return db.query(query, [id])
     .then(data => {
+      (console.log(data.rows))
       return data.rows;
     });
 };
