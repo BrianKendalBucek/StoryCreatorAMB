@@ -93,8 +93,11 @@ $(() => {
     }
 
     $complete.on('click', () => {
-      $.patch('/stories/' + storyId, {completed:true})
-
+      $.post('/stories/' + storyId, {completed:true})
+      .then(story => {
+        console.log(story)
+       $thisStory.find('.completed')
+      })
     })
   })
 
@@ -145,7 +148,7 @@ const createStoryElement = function ({ username, title, content, completed, vote
 
       <footer>
       <span>${created}</span>
-      <span>Completed ${completed}</span>
+      <span class="completed">Completed ${completed}</span>
       <div class="thumbs-container">
       <span>Votes ${votes}</span>
       <div>
