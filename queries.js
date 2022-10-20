@@ -16,7 +16,7 @@ const getStories = () => {
   return db.query(query)
   .then(data => {
     // console.log("++++++++++++", data.rows);
-    // return data.rows;
+    return data.rows;
     });
 };
 
