@@ -50,6 +50,14 @@ h1 {
   padding-top: 0.3rem;
 }
 
+.shorties-link:hover, .create:hover, .profile:hover, #logout:hover {
+  color: rgb(235, 153, 167);
+}
+
+.shorties-link:active, .create:active, .profile:active, #logout:active {
+  color: rgb(237, 128, 146);
+}
+
 .story {
   border: 3px solid darkgrey;
   border-radius: 25px;
@@ -122,4 +130,8 @@ button {
 
 button:hover {
   background-color: darkgrey;
+}
+
+#login {
+  padding-left: 4rem;
 }
