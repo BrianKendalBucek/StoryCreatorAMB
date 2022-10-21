@@ -11,9 +11,9 @@ const getUser = (username) => {
 
 const getStories = () => {
   const query = `SELECT *  FROM stories
-   LEFT JOIN users ON stories.author_id = users.id
-   LEFT JOIN contributions ON stories.id = contributions.story_id
-   ORDER BY stories.id;`
+  JOIN users ON stories.author_id = users.id
+  JOIN contributions ON stories.id = contributions.story_id
+  ORDER BY stories.id;`
   return db.query(query)
   .then(data => {
     // console.log("++++++++++++", data.rows);
@@ -26,8 +26,8 @@ const getStories = () => {
 const getUserStories = (id) => {
 
   const query = `SELECT * FROM stories
-  LEFT JOIN users ON stories.author_id = users.id
-  LEFT JOIN contributions ON stories.id = contributions.story_id
+  JOIN users ON stories.author_id = users.id
+  JOIN contributions ON stories.id = contributions.story_id
   WHERE stories.author_id = $1
   ORDER BY stories.id;`
 
