@@ -1,8 +1,9 @@
 DROP TABLE IF EXISTS contributions CASCADE;
 CREATE TABLE contributions (
   id SERIAL PRIMARY KEY NOT NULL,
+  timestamp TIMESTAMP,
   status BOOLEAN DEFAULT FALSE,
   story_id INTEGER REFERENCES stories(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  created TIMESTAMP
+  
 );
