@@ -16,7 +16,7 @@ router.get("/:id/stories", (req, res) => {
 
   getUserStories(id)
     .then((stories) => {
-      console.log(stories)
+      // console.log(stories)
       res.json({stories});
     })
     .catch(err => {

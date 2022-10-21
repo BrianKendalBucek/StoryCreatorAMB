@@ -38,27 +38,24 @@ h1 {
 
 .nav-bar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  height: 3rem;
+  height: 2rem;
+  span {
+      cursor: pointer;
+    }
+  }
+
+.shorties-link, .create, .profile {
+  padding-top: 0.3rem;
 }
 
-.create,
-.profile,
-.shorties-link {
-  text-decoration: none;
+.shorties-link:hover, .create:hover, .profile:hover, #logout:hover {
+  color: rgb(235, 153, 167);
 }
 
-.shorties-link {
-  margin-top: 0.5rem;
-}
-
-.create {
-  padding-right: 2.5rem;
-}
-
-.shorties-link {
-  font-size: 1.5rem;
+.shorties-link:active, .create:active, .profile:active, #logout:active {
+  color: rgb(237, 128, 146);
 }
 
 .story {
@@ -128,8 +125,13 @@ button {
   border-radius: 15px;
   padding: 0.5rem;
   border: 3px solid darkgrey;
+  cursor: pointer;
 }
 
 button:hover {
   background-color: darkgrey;
+}
+
+#login {
+  padding-left: 4rem;
 }

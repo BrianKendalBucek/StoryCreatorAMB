@@ -21,6 +21,9 @@ $(() => {
     $createStory.hide();
     $intro.removeClass('hidden');
     $slogan.addClass('hidden');
+    $storyForm.addClass('hidden');
+    $storiesContainer.show();
+    renderAllStories();
   })
 
   $login.on('submit', (event) => {
@@ -98,10 +101,7 @@ $(() => {
         console.log("Failure");
       })
   });
-
-
   renderAllStories();
-
 
 });
 
