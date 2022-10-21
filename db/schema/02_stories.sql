@@ -4,7 +4,7 @@ CREATE TABLE stories (
   title TEXT,
   content TEXT,
   completed BOOLEAN,
-  author_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   votes INTEGER,
+  author_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   created TIMESTAMP
 );

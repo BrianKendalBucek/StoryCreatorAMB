@@ -4,5 +4,6 @@ CREATE TABLE contributions (
   timestamp TIMESTAMP,
   status BOOLEAN DEFAULT FALSE,
   story_id INTEGER REFERENCES stories(id) ON DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  
 );
