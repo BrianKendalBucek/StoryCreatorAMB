@@ -51,6 +51,19 @@ const createStory = (story) => {
     .then(res => res.rows[0]);
 };
 
+const updateStory = (id) => {
+  const query = `
+  UPDATE stories
+  SET
+  completed = true
+   WHERE id = $1
+   RETURNING *
+  `
+  return db.query(query, [id])
+    .then(data => {
+      return data.rows[0];
+    })
+}
 
 
-module.exports = { getUser, getStories, getUserStories, createStory };
+module.exports = { getUser, getStories, getUserStories, createStory, updateStory };

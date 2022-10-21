@@ -68,6 +68,7 @@ $(() => {
   $createStory.on('click', () => {
     $storyForm.removeClass('hidden');
     $storiesContainer.hide();
+    $storyForm.find('button.complete').hide();
   })
 
   $cancelButton.on('click', () => {
@@ -78,10 +79,29 @@ $(() => {
   $storiesContainer.on('click', '.story header', function(event)  {
 
     const $thisStory = $(this).closest('.story')
-    console.log($thisStory)
+
     $storiesContainer.find('.story').hide()
     $thisStory.show();
+    $storyForm.removeClass('hidden');
+    const author = $thisStory.attr('author');
+    const storyId = $thisStory.attr('[story-id]');
+    const $complete = $storyForm.find('button.complete');
+    if (author == userId) {
+      $complete.show();
+    } else {
+      $complete.hide();
+    }
+
+    $complete.on('click', () => {
+      $.post('/stories/' + storyId, {completed:true})
+      .then(story => {
+        console.log(story)
+       $thisStory.find('.completed')
+      })
+    })
   })
+
+
 
   $storyForm.on('submit', (event) => {
     event.preventDefault();
@@ -113,9 +133,9 @@ const escapeText = function (str) {
 }
 
 
-const createStoryElement = function ({ username, title, content, completed, votes, created }) {
+const createStoryElement = function ({ username, title, content, completed, votes, created, author_id, id }) {
   const htmlElement = `
-    <article class="story">
+    <article class="story" author="${author_id}" [story-id]="${id}">
     <div class="all-box-content">
     <header>
       <span>${escapeText(title)} by ${escapeText(username)}</span>
@@ -125,7 +145,7 @@ const createStoryElement = function ({ username, title, content, completed, vote
 
       <footer>
       <span>${created}</span>
-      <span>Completed ${completed}</span>
+      <span class="completed">Completed ${completed}</span>
       <div class="thumbs-container">
       <span>Votes ${votes}</span>
       <div>
@@ -137,6 +157,7 @@ const createStoryElement = function ({ username, title, content, completed, vote
       </div>
       </article>
       `
+
       return htmlElement;
     }
 
