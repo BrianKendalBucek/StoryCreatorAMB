@@ -13,10 +13,5 @@ const db = new Pool(dbParams);
 
 db.connect();
 
-// const addStory
-// const contributeStory
-// const getStoryById
-
-// reference LightBnB database
 
 module.exports = db;
