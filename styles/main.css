@@ -1,0 +1,170 @@
+body {
+  font-family: fantasy;
+}
+
+.all {
+  min-height: 100vh;
+  color: dimgray;
+  background-image: url(/images/freddy-castro-u3ajSXhZM_U-unsplash.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+h1 {
+  height: 5px;
+  margin-bottom: 3rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.heads {
+  background-color: dimgray;
+  border-bottom: 3px solid darkgrey;
+  color: #f5c4c4;
+}
+
+.nav-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 3rem;
+}
+
+.create,
+.profile,
+.shorties-link {
+  text-decoration: none;
+}
+
+.shorties-link {
+  margin-top: 0.5rem;
+}
+
+.create {
+  padding-right: 2.5rem;
+}
+
+.shorties-link {
+  font-size: 1.5rem;
+}
+
+.story {
+  border: 3px solid darkgrey;
+  border-radius: 25px;
+  margin: 2rem;
+  background-color: #f5c4c4;
+  color: dimgray;
+}
+
+.all-box-content {
+  margin: 1rem;
+}
+
+.create-your-story {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+.story-head,
+.label-and-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1rem;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cancel,
+.submit {
+  margin: 1rem;
+}
+
+.form-content {
+  width: 35rem;
+  outline: none;
+  border: 3px solid darkgrey;
+  border-radius: 15px;
+  background-color: #f5c4c4;
+  color: dimgray;
+}
+
+textarea {
+  padding: 1rem;
+  caret-color: white;
+}
+
+input {
+  outline: none;
+  border: 3px solid darkgrey;
+  border-radius: 25px;
+  background-color: #f5c4c4;
+  text-align: center;
+  color: dimgray;
+  padding: 0.5rem;
+  caret-color: white;
+}
+
+button {
+  background-color: dimgray;
+  color: #f5c4c4;
+  border-radius: 15px;
+  padding: 0.5rem;
+  border: 3px solid darkgrey;
+}
+
+button:hover {
+  background-color: darkgrey;
+}
+/*# sourceMappingURL=main.css.map */

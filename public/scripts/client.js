@@ -121,10 +121,7 @@ $(() => {
         console.log("Failure");
       })
   });
-
-
   renderAllStories();
-
 
 });
 
